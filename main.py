@@ -26,10 +26,10 @@ class TSP:
         self._city_grid = manual_city if manual_city else self._generate_city_grid(20)
         self._plot_coordinates(self._city_grid)
         self._number_of_cities = len(self._city_grid)
-        self._population_size = 25
-        self._tournament_size = 10
+        self._population_size = 20
+        self._tournament_size = 5
         self._crossover_probability = 0.9
-        self._mutation_probability = 0.9
+        self._mutation_probability = 0.8
         self._number_of_unchanged_runs = 500
         # Line Separator Lengths
         self._runs_separator_amount = 16 + len(str(self._number_of_unchanged_runs))*2
@@ -165,7 +165,7 @@ class TSP:
                      [current_city_coordinates[1], next_city_coordinates[1]], "b")
             current_city_coordinates = tuple(next_city_coordinates)
 
-    def _show_graph(self, runs):
+    def _show_graph(self, runs: int):
         plt.xlabel(f"Number of unchanged Iterations: {self._number_of_unchanged_runs} | "
                    f"Number of actual Iterations: {runs}")
         plt.savefig('TSP Graph.png', bbox_inches='tight')
